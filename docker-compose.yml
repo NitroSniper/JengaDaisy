@@ -1,0 +1,47 @@
+version: '3.12'
+
+services:
+  django:
+    container_name: django
+    build:
+      context: ./DjangoPMS
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./DjangoPMS:/usr/src/app/
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_DEBUG=true
+      - ALLOWED_HOSTS=localhost,127.0.0.1
+      - DJANGO_SECRET_KEY=django-insecure-n7)p+1qf)1uj(6c^a0ovck&6r34wcn+5+-11lh^3e!7g#9yh0s
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_EMAIL=admin@example.com
+      - DJANGO_SUPERUSER_PASSWORD=admin
+      - DB_USER=root
+      - DB_PASSWORD=secret
+      - DB_HOST=db
+    depends_on:
+      - db
+  db:
+    container_name: postgres-db
+    image: postgres:12-alpine
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=secret
+    ports:
+      # If you have postgres installed on your system, please change the port number
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+
+  pg-admin:
+    image: dpage/pgadmin4:6
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@email.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+      - PGADMIN_LISTEN_PORT=5050
+
+    ports:
+      - "5050:5050"
+volumes:
+  data:

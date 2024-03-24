@@ -1,0 +1,27 @@
+{% extends 'frontend/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <nav class="flex justify-between items-start absolute min-w-full">
+        <button class="btn btn-outline btn-primary w-16"><img
+                src="https://daisyui.com/images/daisyui-logo/daisyui-logomark.svg" class="object-scale-down"></button>
+        <div role="tablist" class="tabs tabs-boxed w-64">
+            <a role="tab" class="tab tab-active">Home</a>
+            <a role="tab" class="tab">Contact</a>
+            <a role="tab" class="tab">Support</a>
+        </div>
+        {% include "frontend/Home/Profile.html" %}
+    </nav>
+    <main>
+        <div class="hero min-h-screen bg-base-200">
+            <div class="hero-content text-center">
+                <div class="max-w-md">
+                    <h1 class="text-5xl font-bold">Hello there</h1>
+                    <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi
+                        exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <button class="btn btn-primary">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
