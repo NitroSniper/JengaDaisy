@@ -17,8 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from . import views
 
+from . import views
+app_name = 'api'
 urlpatterns = [
-    path("sign_up", views.sign_up, name="api/sign_up")
+    path("sign_up", views.sign_up, name="sign_up")
 ]
