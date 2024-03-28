@@ -21,5 +21,8 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('sign_up/', views.signup, name='sign_up')
+    path('signup/', views.signup, name='signup'),
+    path('login/', views.login, name='login'),
+    path('index/reserve/', views.index_reserve),
+    path('reserve/', views.reserve, name='reserve')
 ]
